@@ -12,6 +12,7 @@ IDIOMAS = {
     'Inglés': {'api': 'en', 'voz': 'en'},
     'Francés': {'api': 'fr', 'voz': 'fr'},
     'Alemán': {'api': 'de', 'voz': 'de'},
+    'Italiano': {'api': 'it', 'voz': 'it'},
     'Chino': {'api': 'zh', 'voz': 'zh'},
     'Portugués': {'api': 'pt', 'voz': 'pt'}
 }
@@ -55,7 +56,7 @@ if 'resultado' in st.session_state:
     # --- FUNCIÓN DE ESCUCHAR ---
     st.write("🔊 **Escuchar la pronunciación:**")
     try:
-        # Generar el audio usando Google TTS en memoria (sin guardar archivos en el servidor)
+        # Generar el audio usando Google TTS en memoria
         tts = gTTS(text=st.session_state['resultado'], lang=st.session_state['codigo_voz'])
         fp = io.BytesIO()
         tts.write_to_fp(fp)
@@ -65,4 +66,3 @@ if 'resultado' in st.session_state:
         st.audio(fp, format='audio/mp3')
     except Exception as e:
         st.write("No se pudo cargar el reproductor de audio en este momento.")
-
